@@ -6,11 +6,13 @@ public class MainScreenUI {
     Scanner input = new Scanner(System.in);
     MainScreenModel model = new MainScreenModel();
     public MainScreenUI() {
+        model.setScreenDelegate(this);
         do{
             this.printMainMenu();
             model.setMenuChoice(inputMenuChoice());
             model.executeChoice();
-            //TODO: Add delegate to model
+
+
         }
         while(!model.exit());
     }
@@ -27,4 +29,14 @@ public class MainScreenUI {
 
     }
 
+    public void dataReceived(MainScreenModel.DataType dataType) {
+        switch (dataType) {
+            case todoList -> {
+                System.out.println(model.getTodoList());
+            }
+            case task -> {
+
+            }
+        }
+    }
 }
