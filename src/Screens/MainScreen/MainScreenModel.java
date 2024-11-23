@@ -21,6 +21,13 @@ public class MainScreenModel {
             "Log Out.",
             "Exit Program."};
 
+    public MainScreenModel() {
+        tasks = new ArrayList<>(3);
+        tasks.add(new Task(new Date(), "Check email", "The requirement is to check the inbox folder of the email"));
+        tasks.add(new Task(new Date(), "Take lunch", ""));
+        tasks.add(new Task(new Date(), "Drive home","" ));
+    }
+
     public void setScreenDelegate(MainScreenUI screenDelegate) {
         this.screenDelegate = screenDelegate;
     }
@@ -56,17 +63,15 @@ public class MainScreenModel {
     public void executeChoice() {
         switch(currentMenuChoice){
             case 1 ->{
-                tasks = new ArrayList<>(3);
-                tasks.add(new Task(new Date(), "Check email", "The requirement is to check the inbox folder of the email"));
-                tasks.add(new Task(new Date(), "Take lunch", ""));
-                tasks.add(new Task(new Date(), "Drive home","" ));
+
                 screenDelegate.dataReceived(DataType.todoList);
             }
             case 2 ->{
 
             }
             case 3 ->{
-
+               String taskData =  screenDelegate.getData("Input task No from TODO list or Task name");
+               ArrayList<Task> searchResult = searchTasks(taskData);
             }
             case 4 ->{
 
@@ -83,6 +88,11 @@ public class MainScreenModel {
         }
 
 
+    }
+
+    private ArrayList<Task> searchTasks(String taskData) {
+
+        return null;
     }
 
 

@@ -3,9 +3,12 @@ package Screens.MainScreen;
 import java.util.Date;
 
 public class Task {
+    String name;
     String text;
     Date eventDate;
     boolean completed;
+
+
 
     public String getName() {
         return name;
@@ -15,7 +18,7 @@ public class Task {
         this.name = name; 
     }
 
-    String name;
+
     public Task(Date eventDate, String name, String text) {
         this.completed = false;
         this.eventDate = eventDate;

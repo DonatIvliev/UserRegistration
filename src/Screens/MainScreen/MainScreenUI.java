@@ -19,7 +19,19 @@ public class MainScreenUI {
 
     private int inputMenuChoice() {
         System.out.print(">>");
-        return input.nextInt();
+        String userInput = input.nextLine();
+        int choice = 0;
+        try{
+            choice = Integer.parseInt(userInput);
+
+            //TODO: Check whether choice is inside a menu capacity.
+        }
+        catch(Exception e){
+            System.out.println("Please enter a valid choice");
+        }
+        //TODO: Repeat Input do-while. Check choice
+
+
     }
 
     private void printMainMenu(){
@@ -38,5 +50,10 @@ public class MainScreenUI {
 
             }
         }
+    }
+
+    public String getData(String description) {
+        System.out.println(description);
+        return input.nextLine();
     }
 }
