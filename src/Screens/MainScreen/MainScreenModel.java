@@ -23,9 +23,9 @@ public class MainScreenModel {
 
     public MainScreenModel() {
         tasks = new ArrayList<>(3);
-        tasks.add(new Task(new Date(), "Check email", "The requirement is to check the inbox folder of the email"));
-        tasks.add(new Task(new Date(), "Take lunch", ""));
-        tasks.add(new Task(new Date(), "Drive home","" ));
+        tasks.add(new Task(new Date(), "Check email", "The requirement is to check the inbox folder of the email", 1));
+        tasks.add(new Task(new Date(), "Take lunch", "",2 ));
+        tasks.add(new Task(new Date(), "Drive home","" , 3));
     }
 
     public void setScreenDelegate(MainScreenUI screenDelegate) {
@@ -72,6 +72,7 @@ public class MainScreenModel {
             case 3 ->{
                String taskData =  screenDelegate.getData("Input task No from TODO list or Task name");
                ArrayList<Task> searchResult = searchTasks(taskData);
+
             }
             case 4 ->{
 
@@ -91,9 +92,25 @@ public class MainScreenModel {
     }
 
     private ArrayList<Task> searchTasks(String taskData) {
+        ArrayList<Task> result = new ArrayList<>();
 
-        return null;
+        try {
+            int taskNumber = Integer.parseInt(taskData) - 1;
+            if(taskNumber >= 0 && taskNumber < tasks.size()){
+                result.add(tasks.get(taskNumber));
+            }
+        }
+        catch (NumberFormatException ignored) {
+
+        }
+
+        for(Task task: tasks){
+            if(task.name.equals(taskData)){
+                result.add(task);
+            }
+        }
+
+        return result;
     }
-
 
 }

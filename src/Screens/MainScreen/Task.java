@@ -5,6 +5,7 @@ import java.util.Date;
 public class Task {
     String name;
     String text;
+    int id;
     Date eventDate;
     boolean completed;
 
@@ -18,13 +19,16 @@ public class Task {
         this.name = name; 
     }
 
-
+    public Task(Date eventDate, String name, String text, int id){
+        this(eventDate, name, text);
+        this.id = id;
+    }
     public Task(Date eventDate, String name, String text) {
         this.completed = false;
         this.eventDate = eventDate;
         this.name = name;
         this.text = text;
-
+        this.id = 0;
     }
 
     public String getText() {

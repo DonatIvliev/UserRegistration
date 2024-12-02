@@ -1,5 +1,6 @@
 package Screens.MainScreen;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MainScreenUI {
@@ -32,6 +33,7 @@ public class MainScreenUI {
         //TODO: Repeat Input do-while. Check choice
 
 
+        return choice;
     }
 
     private void printMainMenu(){
@@ -55,5 +57,12 @@ public class MainScreenUI {
     public String getData(String description) {
         System.out.println(description);
         return input.nextLine();
+    }
+
+    public void selectToDelete(ArrayList<Task> availiableToDelete) {
+        if(availiableToDelete.isEmpty()){
+            System.out.println("There are no available tasks to delete");
+        }
+        System.out.println("Select a task number to delete");
     }
 }
